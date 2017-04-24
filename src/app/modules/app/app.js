@@ -353,13 +353,18 @@
 		alert(text);
 	};
 
-    $rootScope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
-        // For more info, see comment on pdfoverlay directive (below)
-        if ($.fancybox.isActive && oldUrl.indexOf('preview=true') > 0) {
-            // On history navigation, close Preview and stay on detail page
-            $.fancybox.close();
-        }
-    });
+    // $rootScope.$on('$locationChangeStart', function (event, newUrl, oldUrl) {
+    //     console.log('locationChangeStart');
+    //     console.log(event);
+    //     console.log(newUrl);
+    //     console.log(oldUrl);
+    //     // For more info, see comment on pdfoverlay directive (below)
+    //     if ($.fancybox.isActive && oldUrl.indexOf('preview=true') > 0) {
+    //         // On history navigation, close Preview and stay on detail page
+    //         console.log('close from history event');
+    //         $.fancybox.close();
+    //     }
+    // });
 
 	$rootScope.$on('$stateChangeSuccess', function (event, current, previous) {
 		if (current.title) {
@@ -428,15 +433,18 @@
 					iframe: {
 						preload: false
 					},
-                    afterClose: function() {
-                        if ($location.search().preview) {
-                            history.back();
-                        }
-                    }
+                    // afterClose: function() {
+                    //     console.log($location.search());
+                    //     if ($location.search().preview) {
+                    //         console.log('before history.back()');
+                    //         history.back();
+                    //     }
+                    // }
 				});
-                $(element).on('click', function(e) {
-                    $location.search('preview', 'true');
-                });
+                // $(element).on('click', function(e) {
+                //     console.log('before $location.search(\'preview\', \'true\')');
+                //     $location.search('preview', 'true');
+                // });
 			}
 		};
 	}]);
